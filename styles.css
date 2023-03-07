@@ -68,7 +68,7 @@ div {
 				"plate_a	plate_b"
 				"footer_a	footer_b"
 				"plate_c	plate_c";
-		grid-template-rows: 1.5em 1fr 1.5em 1fr;
+		grid-template-rows: 1.5em 1fr minmax(1.9em, auto) 1fr;
 		grid-template-columns: 1fr 1fr;
     position: relative;
     padding: 0;
@@ -84,7 +84,7 @@ div {
 					"header_a	header_b plate_b"
 					"plate_a	plate_a	plate_b"
 					"footer_a	footer_b	plate_b";
-			grid-template-rows: 1.5em 1fr 1.5em;
+			grid-template-rows: 1.5em 1fr minmax(1.9em, auto);
 			grid-template-columns: 1fr 1fr 2fr;
 	}
 }
@@ -92,13 +92,13 @@ div {
 #header_a {
 	grid-area: header_a;
 	text-align: left;
-	padding: 0.1em;
+	padding-left: 0.5em;
 }
 
 #header_b {
 	grid-area: header_b;
 	text-align: right;
-	padding: 0.1em;
+	padding-right: 0.5em;
 }
 
 #plate_a {
@@ -119,13 +119,26 @@ div {
 #footer_a {
 	grid-area: footer_a;
 	text-align: left;
-	padding: 0.1em;
+	padding-left: 0.5em;
+}
+
+#footer_a div{
+	position: absolute;
+	bottom: 0.5em;
+	left: 0.5em;
 }
 
 #footer_b {
 	grid-area: footer_b;
 	text-align: right;
-	padding: 0.1em;
+	padding-right: 0.5em;
+	position: relative;
+}
+
+#footer_b div{
+	position: absolute;
+	bottom: 0.5em;
+	right: 0.5em;
 }
 
 #footer_b, #header_b:hover {
@@ -207,7 +220,6 @@ div {
 	z-index: 4;
 	font-size: 0.6em;
 	column-count: 2;
-	column-gap: 27.5px;
 	padding: 1.1rem;
   line-height: 1.3;
 }
