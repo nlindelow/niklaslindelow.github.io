@@ -1,0 +1,300 @@
+/* GENERAL */
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body, html {
+	font-family: 'Minion Pro', Times New Roman, serif;
+	font-size: 25px; /* 35 eller 13?*/
+	margin: 0;
+}
+
+@media screen and (min-width: 600px) {
+	body, html {
+		overflow: hidden;
+	}
+}
+
+a, p, h2 {
+  all: unset;
+}
+
+h2 {
+   display: block;
+   content: "";
+   margin-bottom: 1.3em;
+   font-weight: 500;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+br {
+   display: block;
+   content: "";
+   margin-bottom: 0.3em;
+}
+
+a:hover{
+	font-style: italic;
+	cursor: pointer;
+}
+
+.nav {
+	font-style: normal;
+}
+
+.nav:hover {
+	font-style: italic;
+}
+
+div {
+	padding: 0;
+	margin: 0;
+}
+
+/* NAVIGATION */
+
+/* phone */
+#nav_container {
+		display: grid;
+		grid-template-areas:
+				"header_a	header_b"
+				"plate_a	plate_b"
+				"footer_a	footer_b"
+				"plate_c	plate_c";
+		grid-template-rows: 1.5em 1fr 1.5em 1fr;
+		grid-template-columns: 1fr 1fr;
+    position: relative;
+    padding: 0;
+    width:  100vw;
+    height:  100vh;
+    z-index: 2;
+} 
+
+/* computer */
+@media screen and (min-width: 600px) {
+	#nav_container {
+			grid-template-areas:
+					"header_a	header_b plate_b"
+					"plate_a	plate_a	plate_b"
+					"footer_a	footer_b	plate_b";
+			grid-template-rows: 1.5em 1fr 1.5em;
+			grid-template-columns: 1fr 1fr 2fr;
+	}
+}
+
+#header_a {
+	grid-area: header_a;
+	text-align: left;
+	padding: 0.1em;
+}
+
+#header_b {
+	grid-area: header_b;
+	text-align: right;
+	padding: 0.1em;
+}
+
+#plate_a {
+  grid-area: plate_a;
+	cursor: w-resize;
+}
+
+#plate_b {
+  grid-area: plate_b;
+	cursor: e-resize;
+}
+
+#plate_c {
+  grid-area: plate_c;
+  overflow: auto;
+}
+
+#footer_a {
+	grid-area: footer_a;
+	text-align: left;
+	padding: 0.1em;
+}
+
+#footer_b {
+	grid-area: footer_b;
+	text-align: right;
+	padding: 0.1em;
+}
+
+#footer_b, #header_b:hover {
+	cursor: pointer;
+}
+
+/* INFO */
+
+/* phone */
+#blank {
+	grid-template-areas:
+		"scroll"
+		"info_b";
+	grid-template-rows: 1fr auto;
+	grid-template-columns: 1fr;
+	max-width: 100vw;
+	max-height: 100%;
+	background-color: rgb(243 243 243 / 1);
+	overflow: auto;
+}
+
+/* computer */
+@media screen and (min-width: 600px) {
+	#blank {
+		display: none;
+		grid-template-areas:
+			"info_a	info_a"
+			"info_b	info_c"
+			"info_d	info_c";
+		grid-template-rows: 1fr auto auto;
+		grid-template-columns: 1fr 1fr;
+		width: 100%;
+		height: 100vh;
+	}
+
+	#scroll {
+		display: none;
+	}
+
+	#info_a {
+		padding: 1.1rem;
+	}
+
+	#info_b {
+		columns: 20em;
+	}
+
+	#info_c {
+		padding: 1.1rem;
+	}
+
+	#info_d {
+		grid-area: info_d;
+		z-index: 100;
+		font-size: 0.6em;
+		bottom: 0;
+		padding: 1.1rem;
+		position: fixed;
+	}
+}
+
+#scroll {
+	display: inline-flex;
+	flex-direction: column;
+	overflow: auto;
+	padding: 1.1rem;
+	gap: 1.1rem;
+	max-width: 100vw;
+}
+
+#info_a {
+	grid-area: info_a;
+	z-index: 4;
+	order: 1;
+}
+
+#info_b {
+	grid-area: info_b;
+	z-index: 4;
+	font-size: 0.6em;
+	column-count: 2;
+	column-gap: 27.5px;
+	padding: 1.1rem;
+  line-height: 1.3;
+}
+
+#info_c {
+	grid-area: info_c;
+	z-index: 4;
+	font-size: 0.6em;
+	order: 2;
+  line-height: 1.3;
+}
+
+#info_d {
+	grid-area: info_d;
+	z-index: 4;
+	font-size: 0.6em;
+	order: 3;
+  line-height: 1.3;
+}
+
+
+/* ALBUM */
+
+/* Fixes a frame the size of the screen */
+#album_container {
+	position: fixed;
+	top: 0;
+	z-index: 0;
+	width:  100vw;
+  height:  100vh;
+}
+
+/* Exchangeable pages of the album filling up the album_container */
+.page {
+	position: relative;
+	display: none;
+	height: 100vh;
+	width: 100vw;
+	background-color: rgb(243 243 243 / 1);
+	z-index: 1;
+}
+
+/* Pages with fullscreen video, should just contain a DIV with this class */
+.video_full {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   z-index: -1;
+   pointer-events: none;
+   overflow: hidden;
+}
+
+.video_full > iframe {
+   width: 100vw;
+   height: 56.25vw; /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
+   min-height: 100vh;
+   min-width: 177.77vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+
+/* Pages with fullscreen image, should just contain an IMAGE with this class */
+.img_full {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Pages with stamps should contain one main div with this class */
+.page_stamps {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	padding: 0;
+  width:  100vw;
+  height:  100vh;
+	flex-wrap: wrap;
+}
+
+/* Anonymous sub-divs are centered using flex. */
+.page_stamps div {
+	flex: 1;
+	display: flex;
+		align-items: center;
+	justify-content: space-around;
+}
