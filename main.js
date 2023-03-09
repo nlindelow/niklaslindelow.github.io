@@ -78,7 +78,7 @@ blank.style.color = pages[0].dataset.blanktextcolor;
 project_index.textContent = pages[0].dataset.index;
 pr_name.textContent = pages[0].dataset.name;
 pr_year.textContent = pages[0].dataset.year;
-
+plate_b.style.cursor = 'url("cur_r.cur"), auto';
 
 blank.style.display = "none";
 
