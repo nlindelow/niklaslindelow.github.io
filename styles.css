@@ -5,15 +5,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body, html {
+html, body {
 	font-family: 'Lora', 'Minion Pro', Times New Roman, serif;
-	font-size: 25px; /* 35 eller 13?*/
+	font-size: 17px; /* 35 eller 13?*/
 	margin: 0;
+	padding: 0;
+	height: 100%;
 }
 
 @media screen and (min-width: 600px) {
 	body, html {
 		overflow: hidden;
+		background-color: white;
 	}
 }
 
@@ -73,9 +76,44 @@ div {
     position: relative;
     padding: 0;
     width:  100vw;
-    height:  100vh;
+    height:  100%;
     z-index: 2;
-} 
+}
+
+.arrow {
+	display: block;
+	margin: 0;
+	padding: 0;
+  position: absolute;
+  top: 50%;
+}
+
+#left {
+	left: 0.5rem;
+}
+
+#right {
+	right: 0.5rem;
+}
+
+/* phone landscape */
+@media screen and (max-height: 600px) {
+		body, html {
+		overflow: auto;
+	}
+
+	.arrow {
+		display: block !important;
+		margin: 0;
+		padding: 0;
+	  position: absolute;
+	  top: 50%;
+	}
+
+	#info_d {
+		width: 50% !important;
+	}
+}
 
 /* computer */
 @media screen and (min-width: 600px) {
@@ -86,13 +124,24 @@ div {
 					"footer_a	footer_b	plate_b";
 			grid-template-rows: 1.5em 1fr minmax(1.9em, auto);
 			grid-template-columns: 1fr 1fr 2fr;
+			position: relative;
+	}
+	.arrow {
+		display: none;
 	}
 }
 
 #header_a {
 	grid-area: header_a;
 	text-align: left;
-	padding-left: 0.5em;
+	padding-left: 0.5rem;
+}
+
+#header_a div{
+	position: absolute;
+	top: 0.5em;
+	left: 0.57rem;
+	font-size: 0.7em;
 }
 
 #header_b {
@@ -103,12 +152,14 @@ div {
 
 #plate_a {
   grid-area: plate_a;
-	cursor: w-resize;
+  cursor: auto;
+	position: relative;
 }
 
 #plate_b {
   grid-area: plate_b;
-	cursor: e-resize;
+	cursor: URL('cur_r.cur', auto);
+	position: relative;
 }
 
 #plate_c {
@@ -119,13 +170,20 @@ div {
 #footer_a {
 	grid-area: footer_a;
 	text-align: left;
-	padding-left: 0.5em;
+	padding-left: 0.rem;
+	position: relative;
 }
 
 #footer_a div{
 	position: absolute;
-	bottom: 0.5em;
-	left: 0.5em;
+	bottom: 0.6rem;
+	left: 0.7rem;
+	font-size: 0.7em;
+}
+
+#footer_a br {
+	   margin-bottom: 0;
+
 }
 
 #footer_b {
@@ -145,6 +203,12 @@ div {
 	cursor: pointer;
 }
 
+/*
+#pr_name {
+	text-transform: uppercase;
+}
+*/
+
 /* INFO */
 
 /* phone */
@@ -159,6 +223,10 @@ div {
 	background-color: rgb(243 243 243 / 1);
 	overflow: auto;
 }
+
+	.flip {
+		transform: rotate(-90deg);
+	}
 
 /* computer */
 @media screen and (min-width: 600px) {
@@ -184,6 +252,8 @@ div {
 
 	#info_b {
 		columns: 20em;
+		z-index: 0;
+		position: relative;
 	}
 
 	#info_c {
@@ -192,11 +262,17 @@ div {
 
 	#info_d {
 		grid-area: info_d;
-		z-index: 100;
+		z-index: 5;
 		font-size: 0.6em;
 		bottom: 0;
 		padding: 1.1rem;
 		position: fixed;
+		background-color: inherit;
+		width: 25%;
+	}
+
+	.flip {
+		transform: rotate(0deg);
 	}
 }
 
@@ -234,10 +310,11 @@ div {
 
 #info_d {
 	grid-area: info_d;
-	z-index: 4;
+	z-index: 5;
 	font-size: 0.6em;
 	order: 3;
   line-height: 1.3;
+  box-sizing: border-box;
 }
 
 
@@ -249,14 +326,14 @@ div {
 	top: 0;
 	z-index: 0;
 	width:  100vw;
-  height:  100vh;
+  height:  100%;
 }
 
 /* Exchangeable pages of the album filling up the album_container */
 .page {
 	position: relative;
 	display: none;
-	height: 100vh;
+	height: 100%;
 	width: 100vw;
 	background-color: rgb(243 243 243 / 1);
 	z-index: 1;
@@ -264,6 +341,7 @@ div {
 
 /* Pages with fullscreen video, should just contain a DIV with this class */
 .video_full {
+	isolation: isolate;
    position: fixed;
    top: 0;
    left: 0;
@@ -272,17 +350,19 @@ div {
    z-index: -1;
    pointer-events: none;
    overflow: hidden;
+   pointer-events: none;
 }
 
 .video_full > iframe {
    width: 100vw;
    height: 56.25vw; /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
-   min-height: 100vh;
+   min-height: 111vh;
    min-width: 177.77vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
    position: absolute;
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
+   pointer-events: none;
 }
 
 /* Pages with fullscreen image, should just contain an IMAGE with this class */
@@ -299,7 +379,7 @@ div {
 	justify-content: space-around;
 	padding: 0;
   width:  100vw;
-  height:  100vh;
+  height:  100%;
 	flex-wrap: wrap;
 }
 
@@ -310,3 +390,4 @@ div {
 		align-items: center;
 	justify-content: space-around;
 }
+

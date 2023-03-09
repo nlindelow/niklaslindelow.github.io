@@ -14,23 +14,29 @@
   
   <div id="nav_container">
     <div id="header_a" class="nav">
+      <div><p id="pr_name"></p><br>
       <p id="project_index">00</p>
+      </div>
     </div>
     <div id="header_b" class="nav">
-      <a href="./">Niklas Lindelöw Arkitektur</a>
+      <a href="./"><p>Niklas Lindelöw Arkitektur</p></a>
     </div>
-    <div id="plate_a"> 
+    <div id="plate_a">
+      <div class="arrow" id="left">◄</div>
     </div>
     <div id="plate_b">
+      <div class="arrow" id="right">►</div>
       <div id="blank">
+        <div id="info_d">
+          <br>
+          Niklas Lindelöw Arkitektur AB<br>
+          Org. nr. xxxxxx- xxx
+        </div>
         <div id="info_a">
-          Niklas är en arkitekt verksam i Stockholm och Köpenhamn som, beroende av projektets natur samarbetar med relevanta aktörer inom och utanför arkitekturfältet, för att skapa en idégrundad och visuellt generös arkitektur.<br>
+          Niklas Lindelöw, baserad i Stockholm och Köpenhamn, arbetar praktiskt och teoretiskt med arkitektur som rum och objekt i relation till materiell kultur.
           <br>
-          Oavsett omfång, skala och beställare, närmas projekten utifrån de system de agerar i (samhälleliga, ekologiska, ekonomiska, konstruktiva, lagstiftningmässiga etc.), för att på så sätt bättre förstå och förändra projektets och samtidens utmaningar.<br>
+          Sedan sin examen från Det Kongelige Akademi - Arkitektur, i Köpenhamn 2017 och fram till 2023 arbetade han som projektledare för Johansen Skovsted Arkitekter, varifrån han har erfarenhet av samtliga projektstadier.
           <br>
-          Drivkraften är att skapa samhällsmedveten arkitektur med precision och egenart, som oavsett projektförutsättningar har relevans bortom sig själv.<br>
-          <br>
-          Niklas examinerades från Det Kongelige Akademi i Köpenhamn 2017 och arbetade fram till 2023 som projektledare för Johansen Skovsted Arkitekter. Han har erfarenhet av att projektrealisering genom samtliga faser, från skiss till färdig byggnad, nämnvärt från projektet CODAN, Køge (3000m2).<br>
         </div>
         <div id="info_b">
           <h2>Kontakt</h2><br>
@@ -59,11 +65,6 @@
           Föreläsning - <i>Om betongelementbyggeri på Institut for bygningskunst og teknologi, Det Kongelig Akademi, Köpenhamn.</i><br>
           Föreläsning - <i>Om tektonik och big-box arkitektur, Det Kongelige Akademi, Köpenhamn.</i><br>
         </div>
-        <div id="info_d">
-          <br>
-          Niklas Lindelöw Arkitektur AB<br>
-          Org. nr. xxxxxx- xxx
-        </div>
         <div id="scroll"></div>
       </div>
     </div>
@@ -71,58 +72,150 @@
     </div>
     <div id="footer_a" class="nav">
       <div>
-        <p id="project_name">:)</p>
+        <p id="pr_year"></p>
       </div>
     </div>
     <div id="footer_b" class="nav">
       <div>
-        (info)
+        <p>info</p>
       </div>
     </div>
   </div>
 
   <div id="album_container">
 
-    <div class="page" data-index="✎
-" data-name="under konstruktion" data-navtextcolor="rgb(243 243 243 / 1)" data-blanktextcolor="rgb(38 38 38 / 1)">
+    <div class="page" 
+      data-index=""
+      data-name="⥀"
+      data-year="sida under konstruktion" 
+      data-loc="under" 
+      data-desc="construction"
+      data-navtextcolor="rgb(243 243 243 / 1)" 
+      data-blanktextcolor="rgb(38 38 38 / 1)">
+      <!-- 1. The <iframe> (video player) will replace this <div> tag. -->
       <div class="video_full">
-        <iframe width="1920" height="1080" src="https://www.youtube.com/embed/rd2O2e2vrfg?autoplay=1&playlist=rd2O2e2vrfg&loop=1&controls=0&mute=1&rel=0&disablekb=0&fs&modestbranding=1&showinfo=1&iv_load_policy=3&playsinline=1&cc_load_policy=0&iv_load_policy=3&autohide" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; picture-in-picture" allowfullscreen="1"></iframe>
+        <div id="player"></div>
+      </div>
+      <script>
+        // 2. This code loads the IFrame Player API code asynchronously.
+        var tag = document.createElement('script');
+
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // 3. This function creates an <iframe> (and YouTube player)
+        //    after the API code downloads.
+        var player;
+        function onYouTubeIframeAPIReady() {
+          player = new YT.Player('player', {
+            width: '100%',
+            videoId: 'rd2O2e2vrfg',
+            playerVars: { 'autoplay': 1, 'playsinline': 1, 'loop': 1, 'controls': 0, 'playlist': 'rd2O2e2vrfg', 'disablekb': 1, 'fs': 0, 'modestbranding': 1, 'showinfo': 0, 'iv_load_policy': 3, 'cc_load_policy': 0, 'start': 5, 'end': 14 },
+            events: {
+              'onReady': onPlayerReady
+            }
+          });
+        }
+
+        // 4. The API will call this function when the video player is ready.
+        function onPlayerReady(event) {
+           event.target.mute();
+          event.target.playVideo();
+        }
+      </script>
+
+    </div>
+
+    <div class="page" 
+      data-index="" 
+      data-name="Green House" 
+      data-year="Roslagen, 2022" 
+      data-loc="Färdigställt" 
+      data-desc="Växthus i skärgårdsmiljö" 
+      data-navtextcolor="rgb(243 243 243 / 1)" 
+      data-blanktextcolor="rgb(38 38 38 / 1)">
+      <div class="video_full">
+        <iframe width="1920" height="10805" src="https://www.youtube.com/embed/Mwos-DMibbQ?autoplay=1&playlist=Mwos-DMibbQ&loop=1&controls=0&mute=1&rel=0&disablekb=0&fs&modestbranding=1&showinfo=1&iv_load_policy=3&playsinline=1&cc_load_policy=0&iv_load_policy=3&autohide" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
 
-    <div class="page" data-index="01" data-name="Green House" data-navtextcolor="rgb(38 38 38 / 1)" data-blanktextcolor="rgb(243 243 243 / 1)">
-      <div class="video_full">
-        <iframe width="1920" height="10805" src="https://www.youtube.com/embed/elQKWhNOnxc?autoplay=1&playlist=elQKWhNOnxc&loop=1&controls=0&mute=1&rel=0&disablekb=0&fs&modestbranding=1&showinfo=1&iv_load_policy=3&playsinline=1&cc_load_policy=0&iv_load_policy=3&autohide" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
+    <div class="page" 
+      data-index=""
+      data-name="Perec's Plank"      
+      data-year="Hemma, 2020" 
+      data-loc="Färdigställt" 
+      data-desc="&quot Jag hade länge en bred planka som sängbord. Med undantag av fast föda (...) fanns allt som var mig oumbärigt samlat där... &quot"       
+      data-navtextcolor="rgb(38 38 38 / 1)" 
+      data-blanktextcolor="rgb(243 243 243 / 1)">
+      <picture>
+        <source srcset="images/bed_from_below_frame.png" media="(min-width: 600px)">
+        <source srcset="images/bed_from_below_frame_small.png">
+        <img class="img_full" src="images/bed_from_below_frame.png" alt="Säng isometri.">
+      </picture>
     </div>
 
-    <div class="page" data-index="03" data-name="Perec's Plank" data-navtextcolor="rgb(38 38 38 / 1)" data-blanktextcolor="rgb(243 243 243 / 1)">
-      <img class="img_full" src="images/bed_from_below_frame.png" alt="Säng isometri.">
+    <div class="page" 
+      data-index="" 
+      data-name="Att Bebo Bromma flygfält"
+      data-year="Stockholm, 2017"
+      data-loc="Akademiskt" 
+      data-desc="Flygfältet som landskapsrum och katalysator för stadens och bostadens utveckling."  
+      data-navtextcolor="rgb(243 243 243 / 1)" 
+      data-blanktextcolor="rgb(38 38 38 / 1)">
+      <picture>
+        <source srcset="images/bromma_site_model.jpg" media="(min-width: 600px)">
+        <source srcset="images/bromma_site_model_square.jpg" type="">
+        <img class="img_full" src="images/bromma_site_model.jpg" alt="Modell, Bromma flygfält. Gips, Aluminium.">
+      </picture>
     </div>
 
-    <div class="page" data-index="04" data-name="Att Bebo Bromma flygfält" data-navtextcolor="rgb(243 243 243 / 1)" data-blanktextcolor="rgb(38 38 38 / 1)">
-      <img class="img_full" src="images/bromma_site_model.jpg" alt="Modell av Bromma flygfält. Gips, Aluminium.">
-    </div>
-
-    <div class="page" data-index="02" data-name="Hytta" data-navtextcolor="rgb(38 38 38 / 1)" data-blanktextcolor="rgb(243 243 243 / 1)">
+    <div class="page" 
+      data-index="" 
+      data-name="Hytta"
+      data-year="Göteborg, 2022"
+      data-loc="Tävlingsförslag" 
+      data-desc="En socialt interiör i Brunnsparken."
+      data-navtextcolor="rgb(38 38 38 / 1)" 
+      data-blanktextcolor="rgb(243 243 243 / 1)" 
+      style="background-color: rgb(210 210 210);">
       <div class="page_stamps">
-        <img src="images/hytta_plan.png" alt="Hytta, plan.">
+        <picture>
+          <source srcset="images/hytta_plan_flat.png" width="500px" media="(max-height: 600px)">
+          <source srcset="images/hytta_plan.png" width="auto" height="800px" media="(min-width: 600px)">
+          <source srcset="images/hytta_plan.png" width="300px">
+          <img src="images/hytta_plan.png" alt="Hytta, plan." width="auto" height="800px">
+        </picture>
       </div>
     </div>
+
+    <div class="page" 
+      data-index="" 
+      data-name="Green House"
+      data-year="Roslagen, 2022" 
+      data-loc="Färdigställt" 
+      data-desc="Växthus i skärgårdsmiljö" 
+      data-navtextcolor="rgb(38 38 38 / 1)" 
+      data-blanktextcolor="rgb(243 243 243 / 1)">
+      <div class="page_stamps">
+        <div>
+        <picture class="flip">
+          <source srcset="images/green_house_site.png" width="600px" media="(max-width: 600px)">
+          <source srcset="images/green_house_site.png" width="650px">
+        <img src="images/green_house_site.png" alt="Green House. Situationsplan." height="auto" width="700px">
+        </picture>
+        </div>
+      </div>
+    </div>
+
+    <!--
 
     <div class="page" data-index="01" data-name="Green House" data-navtextcolor="rgb(38 38 38 / 1)" data-blanktextcolor="rgb(243 243 243 / 1)">
       <div class="page_stamps">
         <img src="images/green_house_plan.png" alt="Hytta, plan.">
       </div>
     </div>
-
-    <div class="page" data-index="01" data-name="Green House" data-navtextcolor="rgb(38 38 38 / 1)" data-blanktextcolor="rgb(243 243 243 / 1)">
-      <div class="page_stamps">
-        <img src="images/green_house_site.png" alt="Hytta, plan.">
-      </div>
-    </div>
-
-    <!--
+      
     <div class="page" data-index="02" data-name="Hytta" data-navtextcolor="rgb(38 38 38 / 1)" data-blanktextcolor="rgb(243 243 243 / 1)">
       <div class="page_stamps">
         <div>

@@ -60,12 +60,15 @@ var x = 0
 const plate_a = document.getElementById("plate_a");
 const plate_b = document.getElementById("plate_b");
 const nav_container = document.getElementById("nav_container")
+const info_d = document.getElementById("info_d")
 
 // Array with all elements with class "page"
 const pages = document.getElementsByClassName("page");
 
 var project_index = document.getElementById("project_index");
-var project_name = document.getElementById("project_name")
+var pr_name = document.getElementById("pr_name")
+var pr_year = document.getElementById("pr_year")
+
 
 // Displays first instance of pages on page load.
 pages[0].style.display='block';
@@ -73,8 +76,12 @@ nav_container.style.color = pages[0].dataset.navtextcolor;
 blank.style.backgroundColor = pages[0].dataset.navtextcolor;
 blank.style.color = pages[0].dataset.blanktextcolor;
 project_index.textContent = pages[0].dataset.index;
-project_name.textContent = pages[0].dataset.name;
+pr_name.textContent = pages[0].dataset.name;
+pr_year.textContent = pages[0].dataset.year;
+
+
 blank.style.display = "none";
+
 
 
 
@@ -107,9 +114,20 @@ function cycle() {
 			blank.style.backgroundColor = pages[x].dataset.navtextcolor;
 			blank.style.color = pages[x].dataset.blanktextcolor;
 			project_index.textContent = pages[x].dataset.index;
-			project_name.textContent = pages[x].dataset.name;
+			pr_name.textContent = pages[x].dataset.name;
+			pr_year.textContent = pages[x].dataset.year;
 		} else {
 			pages[i].style.display='none'
 		}
+	}
+		if (x != 0) {
+			plate_a.style.cursor = 'url("cur_l.cur"), auto';
+	} else {
+			plate_a.style.cursor = 'default';
+	}
+		if (x != pages.length - 1) {
+			plate_b.style.cursor = 'url("cur_r.cur"), auto';
+	} else {
+			plate_b.style.cursor = 'url("cur_s.cur"), auto';
 	}
 }
